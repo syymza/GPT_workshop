@@ -1,51 +1,26 @@
 import 'dotenv/config';
 
-import { OpenAI } from "langchain/llms/openai";
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { RetrievalQAChain } from "langchain/chains";
 import express, { Router } from 'express';
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
+import { loadDocumentQA, askGPT } from './utils.js';
 
-
-const { API_VERSION, API_KEY, DEPLOYMENT, HOSTNAME, MODEL, EMBEDDINGS } = process.env;
 const app = express();
 const router = Router();
 app.use(express.json());
 
-const loader = new PDFLoader("./TC.pdf");
-const pages = await loader.loadAndSplit();
+console.log('Loading the document...');
 
-const embeddings = new OpenAIEmbeddings({
-    openAIApiKey: API_KEY,
-    modelName: EMBEDDINGS,
-    azureOpenAIApiVersion: API_VERSION,
-    azureOpenAIApiKey: API_KEY,
-    azureOpenAIApiInstanceName: HOSTNAME,
-    azureOpenAIApiDeploymentName: EMBEDDINGS,
-    batchSize:1
-});
-
-const vectorStore = await MemoryVectorStore.fromDocuments(pages, embeddings);
-
-const QA = RetrievalQAChain.fromLLM(new OpenAI({
-    temperature: 0,
-    modelName: MODEL,
-    openAIApiKey: API_KEY,
-    azureOpenAIApiVersion: API_VERSION,
-    azureOpenAIApiKey: API_KEY,
-    azureOpenAIApiInstanceName: HOSTNAME,
-    azureOpenAIApiDeploymentName: DEPLOYMENT
-}), vectorStore.asRetriever(), { returnSourceDocuments: true })
-
+const QA = await loadDocumentQA();
 
 router.post('/ask', async (req, res, next) => {
     try {
-        let text = req.body.question;
-        let result = await QA.call({ query: text });
-        result.text = result.text.trim();
-        res.json(result);
+        let question = req.body.question;
+        let { text: originalAnswer } = await QA.call({ query: question });
+        originalAnswer = originalAnswer.trim();
+        const {text: gptResponse} = await askGPT(question, originalAnswer)
+        console.log("GPT Response:", gptResponse)
+        res.json(JSON.parse(gptResponse));
     } catch (error) {
+        res.json({ "response": "An agent will answer soon.", "language": "Unknown" })
         next(error);
     }
 

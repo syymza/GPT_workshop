@@ -1,6 +1,18 @@
 # Exercise 2: T&C Reader
 
-You are writing an endpoint that answer questions about the Bank's Terms and Conditions
-The quetion will be provided in the body of the request
+You are writing an endpoint that answer questions from users in a different language.
+The endpoint will check if the answer can be found in the Bank's T&C. If so, the answer will be answered directly in the ame language the user used, otherwise the sytem will indicate that an agent will be answering the question.
 
 T&C link: https://www.emiratesnbd.com/-/media/enbd/files/others/terms-and-conditions/generaltermsandconditions.pdf
+
+In case of error processing the system should also indicate that an agent will be answering the question.
+
+Example questions:
+
+- What happens in case of conflicts between Arabic and English
+- Who can initiate a transfer in a joint account?
+- What credit card can I apply to with a salaty of 10,000 Dirhams
+
+# Output:
+
+{ "response": "<RESPONSE>",  "language": "<DETECTED_LANGUAGE>" }
