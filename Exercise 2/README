@@ -1,0 +1,6 @@
+# Exercise 1: T&C Reader
+
+You are writing an endpoint that answer questions about the Bank's Terms and Conditions
+The quetion will be provided in the body of the request
+
+T&C link: https://www.emiratesnbd.com/-/media/enbd/files/others/terms-and-conditions/generaltermsandconditions.pdf
