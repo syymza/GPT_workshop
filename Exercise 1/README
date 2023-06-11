@@ -22,10 +22,14 @@ Then:
 - Suggest exactly 3 hashtags for it.
 
 ## Output
-The new Tweet
+
+A JSON containing the following properties:
+- **text**: the new tweet
+- **hashtags**: an array of 3 hastags
 
 
-## Examples
+## Example Inputs
+
 - We are the best bank in the world, all the other banks suck.
 - Yay, we are going to clean up the ocean, our staff will volunteer! What a day!
 - In celebration of World Ocean Day, volunteer scuba divers from the Exchanger Volunteering Programme participated in an exceptional Dive Cleanup at Dadna Harbour in Fujairah, leaving a lasting impact on the UAE’s waters.Their efforts provide a strong message of optimism and togetherness, demonstrating that we can achieve a cleaner and better future for our oceans when we work together. Start taking charge to protect our beautiful blue planet!
