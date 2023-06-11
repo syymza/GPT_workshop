@@ -1,4 +1,4 @@
-# Exercise 1: T&C Reader
+# Exercise 2: T&C Reader
 
 You are writing an endpoint that answer questions about the Bank's Terms and Conditions
 The quetion will be provided in the body of the request
