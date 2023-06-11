@@ -11,14 +11,12 @@ const summarize = async (longTweet) => {
 
 const getProfesionalTweet = async (tweet) => {
     const response = await askGPT([getIsProfessionalSystem(), getIsProfesssionalUser(tweet.replaceAll('####', ''))]);
-    console.log(response)
     const json = JSON.parse(response)
     return json;
 }
 
 const suggestHashtags = async (tweet) => {
     const response = await askGPT([getSuggestHashtagsSystem(), getSuggestHashtagsUser(tweet.replaceAll('####', ''))]);
-    console.log(response)
     const json = JSON.parse(response)
     return json.hashtags;
 }

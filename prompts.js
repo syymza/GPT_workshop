@@ -15,7 +15,7 @@ const getSummarizeSystem = () => ({
 
         <SUMMARY> represents the result of your output text.
         <SUMMARY> needs to be a professional tweet.
-        <SUMMARY> should be a single sentence.
+        <SUMMARY> should be as short as possible.
     `
 });
 

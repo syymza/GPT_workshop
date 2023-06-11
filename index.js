@@ -12,7 +12,7 @@ router.post('/moderate', async (req, res, next) => {
     let text = req.body.text;
     console.log('*** Original tweet:', text, text.length)
 
-    if (text.length > 280) {
+    if (text.length > 400) {
       console.log('### Summarizing the tweet...')
       text = await summarize(text);
       console.log('*** Summarized tweet:', text, text.length)
@@ -28,9 +28,8 @@ router.post('/moderate', async (req, res, next) => {
       console.log('*** The tweet was flagged as not professional')
       text = newTweet;
       console.log('*** New Tweet:', text, text.length)
-
     } else {
-      console.log('*** The tweet was flagged as professional')
+      console.log('*** The tweet is professional')
     } 
 
     console.log('### Generating hashtags...')
