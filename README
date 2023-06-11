@@ -1,0 +1,24 @@
+# Exercise 1: Twitter moderation
+
+You are writing a twitter moderation REST endpoint for our social media campaigns.
+E.g.:
+
+ - https://twitter.com/ENBDdeals
+ - https://twitter.com/EmiratesNBD_AE
+ 
+
+## Rules:
+- Professional tone.
+- Less than 200 character.
+
+If the tweet is too long:
+- Create a summarised version
+
+If the tweet is not professional enough:
+- Rewrite it in a profesional tone
+
+Once the Twitter passes moderation
+- Suggest exactly 3 hashtags for it.
+
+## OUTPUT
+The new Tweet
