@@ -16,7 +16,6 @@ const getSummarizeSystem = () => ({
         <SUMMARY> represents the result of your output text.
         <SUMMARY> needs to be a professional tweet.
         <SUMMARY> should be as short as possible.
-        <SUMMARY> does not contain any hashtag. If there is any hashtag, remove it.
     `
 });
 

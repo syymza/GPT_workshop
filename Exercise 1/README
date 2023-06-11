@@ -1,0 +1,31 @@
+# Exercise 1: Twitter moderation
+
+You are writing a twitter moderation REST endpoint for our social media campaigns.
+E.g.:
+
+ - https://twitter.com/ENBDdeals
+ - https://twitter.com/EmiratesNBD_AE
+ 
+
+## Rules:
+- Professional tone.
+- Less than 400 character.
+
+If the tweet is too long:
+- Create a summarised version
+
+If the tweet is not professional enough:
+- Rewrite it in a profesional tone
+
+Once the Twitter passes moderation, replace any pre-existing hashtag.
+Then:
+- Suggest exactly 3 hashtags for it.
+
+## Output
+The new Tweet
+
+
+## Examples
+- We are the best bank in the world, all the other banks suck.
+- Yay, we are going to clean up the ocean, our staff will volunteer! What a day!
+- In celebration of World Ocean Day, volunteer scuba divers from the Exchanger Volunteering Programme participated in an exceptional Dive Cleanup at Dadna Harbour in Fujairah, leaving a lasting impact on the UAE’s waters.Their efforts provide a strong message of optimism and togetherness, demonstrating that we can achieve a cleaner and better future for our oceans when we work together. Start taking charge to protect our beautiful blue planet!

@@ -25,14 +25,17 @@ router.post('/moderate', async (req, res, next) => {
     const { isProfessional, tweet: newTweet} = await getProfesionalTweet(text);
 
     if (!isProfessional) {
-      console.log('*** The tweet was flagged as not professional')
+      console.log('*** The tweet was flagged as not professional');
       text = newTweet;
-      console.log('*** New Tweet:', text, text.length)
+      console.log('*** New Tweet:', text, text.length);
     } else {
-      console.log('*** The tweet is professional')
+      console.log('*** The tweet is professional');
     } 
 
-    console.log('### Generating hashtags...')
+    console.log('### Generating hashtags...');
+
+    // Replace any hashtag still there
+    text = text.replace(/\#\w\w+\s?/g, '');
 
     const hashtags = await suggestHashtags(text);
 
