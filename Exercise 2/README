@@ -16,3 +16,8 @@ Example questions:
 # Output:
 
 { "response": "<RESPONSE>",  "language": "<DETECTED_LANGUAGE>" }
+
+# Bonus:
+Add sentiment analysis of the input in the output, so that the agent can be ready for it. E.g.:
+
+{ "response": "<RESPONSE>",  "language": "<DETECTED_LANGUAGE>": sentiment: "<angry|happy|neutral>" }
